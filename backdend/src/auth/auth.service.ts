@@ -3,18 +3,18 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from 'src/entities/Users';
-import { AuthDto, AuthReponse, AuthReponseToken } from './dto';
+import { AuthDto, AuthReponseUsers, AuthReponseToken, AuthReponseAssociations } from './dto';
 
 @Injectable()
 export class AuthService {
     constructor(
         @InjectRepository(Users)
         private authRepository: Repository<Users>,
-        private JwtService: JwtService
+        private jwtService: JwtService
     ) {}
     
-    private async signAuth(donnees: AuthReponse): Promise<string> {
-        return this.JwtService.signAsync({
+    private async signAuthUsers(donnees: AuthReponseUsers): Promise<string> {
+        return await this.jwtService.signAsync({
             id: donnees.id,
             nom: donnees.nom,
             prenoms: donnees.prenoms,
@@ -23,12 +23,21 @@ export class AuthService {
         });
     }
 
-    async authentifier(donnees: AuthDto): Promise<AuthReponseToken> {
-        const reponse =  await this.authRepository
+    private async signAuthAssociations(donnees: AuthReponseAssociations): Promise<string> {
+        return await this.jwtService.signAsync({
+            id: donnees.id,
+            nom_association: donnees.nom_association,
+            email: donnees.email,
+            tel: donnees.tel
+        });
+    }
+
+    async authentifierAsUsers(donnees: AuthDto): Promise<AuthReponseToken> {
+        const reponse: AuthReponseUsers =  await this.authRepository
             .createQueryBuilder('u')
             .select([
-                'u.id', 'u.nom', 'u.prenoms',
-                'u.email', 'u.tel'
+                'u.id as id', 'u.nom as nom', 'u.prenoms as prenoms',
+                'u.email as email', 'u.tel as tel'
             ])
             .where(`(u.email=:identifiant OR u.tel=:identifiant) 
                 AND u.password=SHA2(:password, 256)`, {
@@ -38,7 +47,26 @@ export class AuthService {
             .getRawOne();
         if(!reponse) throw new UnauthorizedException('Credentials incorrects !');
         return {
-            access_token: await this.signAuth(reponse)
+            access_token: await this.signAuthUsers(reponse)
+        }
+    }
+
+    async authentifierAsAssociation(donnees: AuthDto): Promise<AuthReponseToken> {
+        const reponse: AuthReponseAssociations = await this.authRepository
+            .createQueryBuilder('a')
+            .select([
+                'a.id as id', 'a.nom_association as nom_association',
+                'a.email as email', 'a.tel as tel'
+            ])
+            .where(`(a.email=:identifiant OR a.tel=:identifiant)
+                AND a.password=SHA2(:password, 256)`, {
+                    identifiant: donnees.identifiant,
+                    password: donnees.password
+                })
+            .getRawOne();
+        if(!reponse) throw new UnauthorizedException('Credentials incorrects !');
+        return {
+            access_token: await this.signAuthAssociations(reponse)
         }
     }
 }

@@ -11,6 +11,12 @@ export class AuthController {
     @Post('users')
     async authUser(@Body() donnees: AuthDto) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
-        return await this.authService.authentifier(donnees);
+        return await this.authService.authentifierAsUsers(donnees);
+    }
+
+    @Post('associations')
+    async authAssociations(@Body() donnees: AuthDto) {
+        if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
+        return await this.authService.authentifierAsAssociation(donnees);
     }
 }

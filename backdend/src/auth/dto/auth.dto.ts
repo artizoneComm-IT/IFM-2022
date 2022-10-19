@@ -3,7 +3,7 @@ export class AuthDto {
     password: string;
 }
 
-export class AuthReponse {
+export class AuthReponseUsers {
     id: number;
     nom: string;
     prenoms: string;
@@ -11,6 +11,12 @@ export class AuthReponse {
     tel: string;
 }
 
+export class AuthReponseAssociations {
+    id: number;
+    nom_association: string;
+    email: string;
+    tel: string;
+}
 export class AuthReponseToken {
     access_token: string;
 }
