@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from 'src/entities/Users';
 import { Repository } from 'typeorm';
-import { CreateUsersDto, UpdateUsersDto } from './dto';
+import { CreateUsersDto, UpdatePasswordDto, UpdateUsersDto } from './dto';
 
 @Injectable()
 export class UsersService {
@@ -53,6 +53,26 @@ export class UsersService {
                 email: donnees.email,
                 tel: donnees.tel,
                 facebook: donnees.facebook
+            })
+            .where(`id=:identifiant`, { identifiant: user_id })
+            .execute();
+    }
+
+    async update_password(donnees: UpdatePasswordDto, user_id: number): Promise<void> {
+        const verify = await this.usersRepository
+            .createQueryBuilder('u')
+            .select(['u.id'])
+            .where(`u.id=:identifiant AND u.password=SHA2(:password, 256)`, {
+                identifiant: user_id,
+                password: donnees.last_password
+            })
+            .getRawOne();
+        if(!verify) throw new ForbiddenException('Credentials incorrects !');
+        await this.usersRepository
+            .createQueryBuilder()
+            .update(Users)
+            .set({
+                password: () => 'SHA2('+donnees.new_password+', 256)'
             })
             .where(`id=:identifiant`, { identifiant: user_id })
             .execute();

@@ -11,3 +11,8 @@ export class UpdateUsersDto {
     tel: string;
     facebook: string;
 }
+
+export class UpdatePasswordDto {
+    last_password: string;
+    new_password: string;
+}
