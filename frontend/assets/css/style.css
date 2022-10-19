@@ -84,6 +84,56 @@ body{
     right:10px;
     top:15px;
 }
+/* .search {
+    width: 100%;
+    margin-bottom: auto;
+    border-color: var(--color);
+    height: 50px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.search-input {
+    border-color: var(--color);
+    color: var(--color);
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    caret-color: transparent;
+    line-height: 20px;
+    transition: width 0.4s linear
+}
+
+.search .search-input {
+    padding: 0 10px;
+    width: 100%;
+    caret-color: var(--color);
+    font-size: 19px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+}
+
+
+.search-icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color);
+    background-color: #536bf6;
+    font-size: 10px;
+    bottom: 30px;
+    position: relative;
+    border-color: var(--color);
+    border-radius: 5px;
+} */
 
 .search-icon:hover{
 
@@ -97,7 +147,7 @@ a:link {
 
 /* header */
 #header{
-    background: url(../images/banner-img-1.jpg) top/cover no-repeat;
+    background: url(../images/offer_img.jpg) top/cover no-repeat;
 }
 .carousel-inner h1{
     font-size: 60px;
@@ -173,7 +223,7 @@ a:link {
 
 /* offers */
 #offers{
-    background: url(../images/offer_img.jpg) center/cover no-repeat;
+    background: url(../images/noel-banner.png) center/cover no-repeat;
 }
 #offers .row{
     min-height: 60vh;
@@ -192,6 +242,11 @@ a:link {
 /* about */
 #about{
     background-color: rgba(179, 179, 179, 0.05);
+}
+
+.card img{
+    width: 15em;
+    height: auto;
 }
 
 /* newsletter */
