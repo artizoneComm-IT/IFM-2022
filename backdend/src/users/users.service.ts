@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from 'src/entities/Users';
 import { Repository } from 'typeorm';
-import { CreateUsersDto } from './dto';
+import { CreateUsersDto, UpdateUsersDto } from './dto';
 
 @Injectable()
 export class UsersService {
@@ -36,11 +36,25 @@ export class UsersService {
             ])
             .getRawMany();
     }
+
     async findone(donnees: { id: number }): Promise<Users> {
         return await this.usersRepository
             .createQueryBuilder('u')
             .select([])
             .where(`u.id=:identifiant`, { identifiant: donnees.id })
             .getRawOne();
+    }
+
+    async update(donnees: UpdateUsersDto, user_id: number): Promise<void> {
+        await this.usersRepository
+            .createQueryBuilder()
+            .update(Users)
+            .set({
+                email: donnees.email,
+                tel: donnees.tel,
+                facebook: donnees.facebook
+            })
+            .where(`id=:identifiant`, { identifiant: user_id })
+            .execute();
     }
 }

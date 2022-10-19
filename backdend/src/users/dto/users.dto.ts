@@ -5,3 +5,9 @@ export class CreateUsersDto {
     tel: string;
     password: string;
 }
+
+export class UpdateUsersDto {
+    email: string;
+    tel: string;
+    facebook: string;
+}
