@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { AssociationsModule } from './associations/associations.module';
 import { ArticlesModule } from './articles/articles.module';
+import { CategoriesModule } from './categories/categories.module';
+import { TypeArticlesModule } from './type-articles/type-articles.module';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { ArticlesModule } from './articles/articles.module';
       synchronize: true,
       autoLoadEntities: true
     }),
-    AuthModule, UsersModule, AssociationsModule, ArticlesModule
+    AuthModule, UsersModule, AssociationsModule, ArticlesModule, CategoriesModule, TypeArticlesModule
   ]
 })
 export class AppModule {}
