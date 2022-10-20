@@ -51,11 +51,14 @@ CREATE TABLE IF NOT EXISTS articles(
     `description` TEXT,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NULL,
-    `user_id` INT(11) NOT NULL,
+    `user_id` INT(11),
+    association_id INT(11),
     categorie_id INT(11) NOT NULL,
     type_article_id INT(11) NOT NULL,
     CONSTRAINT fk_articles_user_id 
         FOREIGN KEY(`user_id`) REFERENCES users(id),
+    CONSTRAINT fk_articles_association_id 
+        FOREIGN KEY(association_id) REFERENCES associations(id),
     CONSTRAINT fk_articles_categorie_id
         FOREIGN KEY(categorie_id) REFERENCES categories(id),
     CONSTRAINT fk_articles_type_article_id
