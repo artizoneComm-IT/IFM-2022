@@ -1,7 +1,8 @@
 import { Body, Controller, Get, NotAcceptableException, 
     Param, Patch, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CreateUsersDto, UpdatePasswordDto, UpdateUsersDto } from './dto';
+import { CreateUsersDto, ParamUsersDto, 
+    UpdatePasswordDto, UpdateUsersDto } from './dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -24,7 +25,7 @@ export class UsersController {
 
     @UseGuards(AuthGuard('jwtZarao'))
     @Get(':id')
-    async findUsersById(@Param() donnees: { id: number }) {
+    async findUsersById(@Param() donnees: ParamUsersDto) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
         return await this.usersService.findone(donnees);
     }

@@ -2,7 +2,8 @@ import { Body, Controller, Get, NotAcceptableException,
     Param, Patch, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AssociationsService } from './associations.service';
-import { CreateAssociationsDto, UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto/associations.dto';
+import { CreateAssociationsDto, ParamAssociationsDto, 
+    UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto/associations.dto';
 
 @Controller('associations')
 export class AssociationsController {
@@ -23,7 +24,7 @@ export class AssociationsController {
     }
 
     @Get(':id')
-    async findAssociations(@Param() donnees: { id: number }) {
+    async findAssociations(@Param() donnees: ParamAssociationsDto) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
         return await this.associationsService.findone(donnees);
     }
