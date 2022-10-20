@@ -1,8 +1,8 @@
-import { Body, Controller, NotAcceptableException, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, NotAcceptableException, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { ArticlesService } from './articles.service';
-import { CreateArticlesDto } from './dto';
+import { CreateArticlesDto, ParamArticlesDto, UpdateArticlesDto } from './dto';
 
 @ApiBearerAuth()
 @Controller('articles')
@@ -18,5 +18,21 @@ export class ArticlesController {
         return await this.articlesService.create(donnees, parseInt(req.user.id));
     }
 
-    
+    @Get('all')
+    async findlallArticles() {
+        return await this.articlesService.findall();
+    }
+
+    @Get(':id')
+    async findArticlesById(@Param() donnees: ParamArticlesDto) {
+        if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
+        return await this.articlesService.findone(donnees);
+    }
+
+    @UseGuards(AuthGuard('jwtZarao'))
+    @Put('update')
+    async updateArticles(@Body() donnees: UpdateArticlesDto) {
+        if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
+        return await this.articlesService.update(donnees);
+    }
 }

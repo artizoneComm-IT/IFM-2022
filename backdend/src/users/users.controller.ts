@@ -19,13 +19,11 @@ export class UsersController {
         return await this.usersService.create(donnees);
     }
 
-    @UseGuards(AuthGuard('jwtZarao'))
     @Get('all')
     async findallUsers() {
         return await this.usersService.findall();
     }
 
-    @UseGuards(AuthGuard('jwtZarao'))
     @Get(':id')
     async findUsersById(@Param() donnees: ParamUsersDto) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
