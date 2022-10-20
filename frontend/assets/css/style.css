@@ -90,7 +90,7 @@ body{
     color: var(--color) !important;
 } 
 .fa-search:hover{
-
+    cursor: pointer;
     color: black !important;
 }
 
@@ -145,6 +145,7 @@ a:link {
 }
 
 .collection-img:hover{
+    cursor: pointer;
     -webkit-transform: scale(0.9);
         -ms-transform: scale(0.9);
             transform: scale(0.9);
@@ -169,6 +170,7 @@ a:link {
     transition: all 0.3s ease;
 }
 .special-img:hover img{
+    cursor: pointer;
     -webkit-transform: scale(1.2);
         -ms-transform: scale(1.2);
             transform: scale(1.2);
