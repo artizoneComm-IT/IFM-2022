@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Articles } from 'src/entities/Articles';
 import { Categories } from 'src/entities/Categories';
@@ -83,7 +83,17 @@ export class ArticlesService {
         .getRawOne();
     }
 
-    async update(donnees: UpdateArticlesDto): Promise<void> {
+    async update(donnees: UpdateArticlesDto, user_id: number): Promise<void> {
+        const verify: Articles = await this.articlesRepository
+        .createQueryBuilder('a')
+        .select(['a.id'])
+        .where(`a.id=:identifiant AND a.user_id=:userId`, {
+            identifiant: donnees.id,
+            userId: user_id
+        })
+        .getRawOne();
+
+        if(!verify) throw new ForbiddenException('Credentials incorrects !');
         await this.articlesRepository
         .createQueryBuilder()
         .update(Articles)
@@ -97,5 +107,19 @@ export class ArticlesService {
         })
         .where(`id=:identifiant`, { identifiant: donnees.id })
         .execute();
+    }
+
+    async remove(donnees: ParamArticlesDto, user_id: number): Promise<void> {
+        const verify: Articles = await this.articlesRepository
+        .createQueryBuilder('a')
+        .select(['a.id'])
+        .where(`a.id=:identifiant AND a.user_id=:userId`, {
+            identifiant: donnees.id,
+            userId: user_id
+        })
+        .getRawOne();
+
+        if(!verify) throw new ForbiddenException('Credentials incorrects !');
+        await this.articlesRepository.delete(donnees.id);
     }
 }

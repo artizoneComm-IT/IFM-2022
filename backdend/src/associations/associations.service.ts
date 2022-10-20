@@ -89,14 +89,14 @@ export class AssociationsService {
     }
 
     async update(donnees: UpdateAssociationsDto, user_id: number): Promise<void> {
-        const verify: Associations[] = await this.associationsRepository
+        const verify: Associations = await this.associationsRepository
         .createQueryBuilder('a')
         .select(['a.id'])
         .where(`a.id=:identifiant AND a.user_id=:userId`, {
             identifiant: donnees.id,
             userId: user_id
         })
-        .getRawMany();
+        .getRawOne();
 
         if(!verify) throw new ForbiddenException('Credentials incorrects !');
         await this.associationsRepository
@@ -113,7 +113,7 @@ export class AssociationsService {
     }
 
     async updatePassword(donnees: UpdateAssociationPasswordDto, user_id: number): Promise<void> {
-        const verify: Associations[] = await this.associationsRepository
+        const verify: Associations = await this.associationsRepository
         .createQueryBuilder('a')
         .select(['a.id'])
         .where(`a.id=:identifiant 
@@ -123,7 +123,7 @@ export class AssociationsService {
             password: donnees.last_password,
             userId: user_id
         })
-        .getRawMany();
+        .getRawOne();
 
         if(!verify) throw new ForbiddenException('Credentials incorrects !');
         await this.associationsRepository
@@ -140,14 +140,15 @@ export class AssociationsService {
     }
 
     async remove(donnees: ParamAssociationsDto, user_id: number): Promise<void> {
-        const verify: Associations[] = await this.associationsRepository
+        const verify: Associations = await this.associationsRepository
         .createQueryBuilder('a')
         .select(['a.id'])
         .where(`a.id=:identifiant AND a.user_id=:userId`, {
             identifiant: donnees.id,
             userId: user_id
         })
-        .getRawMany();
+        .getRawOne();
+        
         if(!verify) throw new ForbiddenException('Credentials incorrects !');
         await this.associationsRepository.delete(donnees.id);
     }
