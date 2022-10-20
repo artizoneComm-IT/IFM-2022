@@ -46,7 +46,7 @@ export class ArticlesController {
     }
 
     @UseGuards(AuthGuard('jwtZarao'))
-    @Get('users')
+    @Get('associations')
     async findallArticlesByAssociationsId(@Request() req: any) {
         if(!req.user.nom_association) throw new ForbiddenException('Credentials incorrects !');
         return await this.articlesService.findallbyAssociationId(parseInt(req.user.id));
