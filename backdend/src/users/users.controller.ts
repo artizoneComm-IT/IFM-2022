@@ -1,10 +1,12 @@
 import { Body, Controller, Get, NotAcceptableException, 
     Param, Patch, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { CreateUsersDto, ParamUsersDto, 
     UpdatePasswordDto, UpdateUsersDto } from './dto';
 import { UsersService } from './users.service';
 
+@ApiBearerAuth()
 @Controller('users')
 export class UsersController {
     constructor(

@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('API de Zarao')
     .setVersion('1.0')
     .addTag('iTeam-$')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
