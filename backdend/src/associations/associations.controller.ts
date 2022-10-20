@@ -58,7 +58,7 @@ export class AssociationsController {
         return await this.associationsService.updatePassword(donnees, parseInt(req.user.id));
     }
 
-    @Delete('delete')
+    @Delete('delete/:id')
     async removeAssociations(@Param() donnees: ParamRemoveAssociationsDto, @Request() req: any) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
         return await this.associationsService.remove(donnees, parseInt(req.user.id));
