@@ -1,11 +1,14 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Articles } from 'src/entities/Articles';
+import { Repository } from 'typeorm';
+import { Associations } from 'src/entities/Associations';
 import { Categories } from 'src/entities/Categories';
 import { TypeArticles } from 'src/entities/TypeArticles';
 import { Users } from 'src/entities/Users';
-import { Repository } from 'typeorm';
-import { CreateArticlesDto, ParamArticlesDto, UpdateArticlesDto } from './dto';
+import { Articles } from 'src/entities/Articles';
+import { CategoriesArticlesDto, CreateArticlesDto, 
+    NomArticleDto, ParamArticlesDto, TypeArticlesDto, 
+    UpdateArticlesDto } from './dto';
 
 @Injectable()
 export class ArticlesService {
@@ -14,7 +17,7 @@ export class ArticlesService {
         private articlesRepository: Repository<Articles>
     ) {}
 
-    async create(donnees: CreateArticlesDto, user_id: number): Promise<void> {
+    async createUsers(donnees: CreateArticlesDto, user_id: number): Promise<void> {
         await this.articlesRepository
         .createQueryBuilder()
         .insert()
@@ -30,6 +33,22 @@ export class ArticlesService {
         .execute();
     }
 
+    async createByAssociations(donnees: CreateArticlesDto, association_id: number): Promise<void> {
+        await this.articlesRepository
+        .createQueryBuilder()
+        .insert()
+        .into(Articles)
+        .values({
+            nomArticle: donnees.nom_article,
+            nombres: donnees.nombres,
+            description: donnees.description,
+            associationId: association_id,
+            categorieId: donnees.categorie_id,
+            typeArticleId: donnees.type_article_id
+        })
+        .execute();
+    }
+
     async findall(): Promise<Articles[]> {
         return await this.articlesRepository
         .createQueryBuilder('a')
@@ -38,12 +57,16 @@ export class ArticlesService {
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
-            'u.tel as tel_createur', 'c.nom_categorie as categorie_article',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
             't.type as type_article'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
         .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
         .getRawMany();
     }
 
@@ -55,13 +78,39 @@ export class ArticlesService {
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
-            'u.tel as tel_createur', 'c.nom_categorie as categorie_article',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
             't.type as type_article'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
         .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
         .where(`a.user_id=:identifiant`, { identifiant: user_id })
+        .getRawMany();
+    }
+
+    async findallbyAssociationId(association_id: number): Promise<Articles[]> {
+        return await this.articlesRepository
+        .createQueryBuilder('a')
+        .select([
+            'a.id as id', 'a.nom_article as nom_article',
+            'a.nombres as nombres', 'a.description as description',
+            'a.created_at as created_at', 'a.updated_at as updated_at',
+            'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
+            't.type as type_article'
+        ])
+        .innerJoin(Users, 'u', 'u.id = a.user_id')
+        .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
+        .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
+        .where(`a.user_id=:identifiant`, { identifiant: association_id })
         .getRawMany();
     }
 
@@ -73,14 +122,87 @@ export class ArticlesService {
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
-            'u.tel as tel_createur', 'c.nom_categorie as categorie_article',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
             't.type as type_article'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
         .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
         .where(`a.id=:identifiant`, { identifiant: donnees.id })
         .getRawOne();
+    }
+
+    async findByName(donnees: NomArticleDto): Promise<Articles[]> {
+        return await this.articlesRepository
+        .createQueryBuilder('a')
+        .select([
+            'a.id as id', 'a.nom_article as nom_article',
+            'a.nombres as nombres', 'a.description as description',
+            'a.created_at as created_at', 'a.updated_at as updated_at',
+            'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
+            't.type as type_article'
+        ])
+        .innerJoin(Users, 'u', 'u.id = a.user_id')
+        .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
+        .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
+        .where(`SOUNDEX(a.nom_article)=SOUNDEX(:identifiant)`, 
+            { identifiant: donnees.nom })
+        .getRawMany();
+    }
+
+    async findByCategories(donnees: CategoriesArticlesDto): Promise<Articles[]> {
+        return await this.articlesRepository
+        .createQueryBuilder('a')
+        .select([
+            'a.id as id', 'a.nom_article as nom_article',
+            'a.nombres as nombres', 'a.description as description',
+            'a.created_at as created_at', 'a.updated_at as updated_at',
+            'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
+            't.type as type_article'
+        ])
+        .innerJoin(Users, 'u', 'u.id = a.user_id')
+        .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
+        .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
+        .where(`a.categorie_id)=:identifiant`, 
+            { identifiant: donnees.categorie_id })
+        .getRawMany();
+    }
+
+    async findByTypeArticles(donnees: TypeArticlesDto): Promise<Articles[]> {
+        return await this.articlesRepository
+        .createQueryBuilder('a')
+        .select([
+            'a.id as id', 'a.nom_article as nom_article',
+            'a.nombres as nombres', 'a.description as description',
+            'a.created_at as created_at', 'a.updated_at as updated_at',
+            'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
+            'u.tel as tel_createur', 
+            'as.nom_association as nom_association_createur',
+            'as.tel as tel_association_createur',
+            'c.nom_categorie as categorie_article',
+            't.type as type_article'
+        ])
+        .innerJoin(Users, 'u', 'u.id = a.user_id')
+        .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
+        .innerJoin(TypeArticles, 't', 't.id = a.type_article_id')
+        .innerJoin(Associations, 'as', 'as.id = a.association_id')
+        .where(`a.type_article_id)=:identifiant`, 
+            { identifiant: donnees.type_article_id })
+        .getRawMany();
     }
 
     async update(donnees: UpdateArticlesDto, user_id: number): Promise<void> {

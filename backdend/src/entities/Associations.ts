@@ -4,9 +4,11 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Users } from "./Users";
+import { Articles } from "./Articles";
 
 @Index("fk_associations_user_id", ["userId"], {})
 @Entity("associations", { schema: "ZARAO" })
@@ -48,4 +50,7 @@ export class Associations {
   })
   @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
   user: Users;
+
+  @OneToMany(() => Articles, (articles) => articles.association)
+  articles: Articles[];
 }

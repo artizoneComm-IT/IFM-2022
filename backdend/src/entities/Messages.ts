@@ -6,11 +6,11 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Users } from "./Users";
 import { TypeMessages } from "./TypeMessages";
+import { Users } from "./Users";
 
-@Index("fk_messages_type_message_id", ["typeMessageId"], {})
 @Index("fk_messages_dest_id", ["userId"], {})
+@Index("fk_messages_type_message_id", ["typeMessageId"], {})
 @Entity("messages", { schema: "ZARAO" })
 export class Messages {
   @PrimaryGeneratedColumn({ type: "int", name: "id" })
@@ -38,13 +38,6 @@ export class Messages {
   @Column("varchar", { name: "path_file", nullable: true, length: 255 })
   pathFile: string | null;
 
-  @ManyToOne(() => Users, (users) => users.messages, {
-    onDelete: "RESTRICT",
-    onUpdate: "RESTRICT",
-  })
-  @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
-  user: Users;
-
   @ManyToOne(() => TypeMessages, (typeMessages) => typeMessages.messages, {
     onDelete: "RESTRICT",
     onUpdate: "RESTRICT",
@@ -52,10 +45,10 @@ export class Messages {
   @JoinColumn([{ name: "type_message_id", referencedColumnName: "id" }])
   typeMessage: TypeMessages;
 
-  @ManyToOne(() => Users, (users) => users.messages2, {
+  @ManyToOne(() => Users, (users) => users.messages, {
     onDelete: "RESTRICT",
     onUpdate: "RESTRICT",
   })
   @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
-  user_2: Users;
+  user: Users;
 }

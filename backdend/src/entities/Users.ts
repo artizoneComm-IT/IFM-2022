@@ -52,7 +52,4 @@ export class Users {
 
   @OneToMany(() => Messages, (messages) => messages.user)
   messages: Messages[];
-
-  @OneToMany(() => Messages, (messages) => messages.user_2)
-  messages2: Messages[];
 }

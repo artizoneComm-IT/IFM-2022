@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Associations } from 'src/entities/Associations';
 import { Users } from 'src/entities/Users';
 import { Repository } from 'typeorm';
-import { CreateAssociationsDto, ParamAssociationsDto, 
+import { CreateAssociationsDto, NomAssociationDto, ParamAssociationsDto, 
     UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto';
 
 @Injectable()
@@ -72,7 +72,7 @@ export class AssociationsService {
         .getRawMany();
     }
 
-    async findallByNomAssociation(donnees: { nom: string }): Promise<Associations[]> {
+    async findallByNomAssociation(donnees: NomAssociationDto): Promise<Associations[]> {
         return await this.associationsRepository
         .createQueryBuilder('a')
         .select([
@@ -148,7 +148,7 @@ export class AssociationsService {
             userId: user_id
         })
         .getRawOne();
-        
+
         if(!verify) throw new ForbiddenException('Credentials incorrects !');
         await this.associationsRepository.delete(donnees.id);
     }

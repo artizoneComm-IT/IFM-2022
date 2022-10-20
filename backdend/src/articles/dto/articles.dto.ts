@@ -41,3 +41,18 @@ export class UpdateArticlesDto {
     @ApiProperty()
     type_article_id: number;
 }
+
+export class NomArticleDto {
+    @ApiProperty()
+    nom: string;
+}
+
+export class CategoriesArticlesDto {
+    @ApiProperty()
+    categorie_id: number;
+}
+
+export class TypeArticlesDto {
+    @ApiProperty()
+    type_article_id: number;
+}

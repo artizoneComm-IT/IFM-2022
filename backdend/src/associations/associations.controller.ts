@@ -3,7 +3,7 @@ import { Body, Controller, Delete, Get, NotAcceptableException,
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { AssociationsService } from './associations.service';
-import { CreateAssociationsDto, ParamAssociationsDto, 
+import { CreateAssociationsDto, NomAssociationDto, ParamAssociationsDto, 
     ParamRemoveAssociationsDto, 
     UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto/associations.dto';
 
@@ -39,7 +39,7 @@ export class AssociationsController {
     }
 
     @Get('nom/:nom')
-    async findAssociationBy(@Body() donnees: { nom: string }) {
+    async findAssociationBy(@Param() donnees: NomAssociationDto) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
         return await this.associationsService.findallByNomAssociation(donnees);
     }
