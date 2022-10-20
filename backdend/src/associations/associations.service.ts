@@ -3,7 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Associations } from 'src/entities/Associations';
 import { Users } from 'src/entities/Users';
 import { Repository } from 'typeorm';
-import { CreateAssociationsDto, UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto/associations.dto';
+import { CreateAssociationsDto, ParamAssociationsDto, 
+    UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto';
 
 @Injectable()
 export class AssociationsService {
@@ -88,7 +89,7 @@ export class AssociationsService {
     }
 
     async update(donnees: UpdateAssociationsDto, user_id: number): Promise<void> {
-        const verify = await this.associationsRepository
+        const verify: Associations[] = await this.associationsRepository
         .createQueryBuilder('a')
         .select(['a.id'])
         .where(`a.id=:identifiant AND a.user_id=:userId`, {
@@ -112,7 +113,7 @@ export class AssociationsService {
     }
 
     async updatePassword(donnees: UpdateAssociationPasswordDto, user_id: number): Promise<void> {
-        const verify = await this.associationsRepository
+        const verify: Associations[] = await this.associationsRepository
         .createQueryBuilder('a')
         .select(['a.id'])
         .where(`a.id=:identifiant 
@@ -136,5 +137,18 @@ export class AssociationsService {
             userId: user_id
         })
         .execute();
+    }
+
+    async remove(donnees: ParamAssociationsDto, user_id: number): Promise<void> {
+        const verify: Associations[] = await this.associationsRepository
+        .createQueryBuilder('a')
+        .select(['a.id'])
+        .where(`a.id=:identifiant AND a.user_id=:userId`, {
+            identifiant: donnees.id,
+            userId: user_id
+        })
+        .getRawMany();
+        if(!verify) throw new ForbiddenException('Credentials incorrects !');
+        await this.associationsRepository.delete(donnees.id);
     }
 }

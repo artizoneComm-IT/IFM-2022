@@ -1,9 +1,10 @@
-import { Body, Controller, Get, NotAcceptableException, 
+import { Body, Controller, Delete, Get, NotAcceptableException, 
     Param, Patch, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { AssociationsService } from './associations.service';
 import { CreateAssociationsDto, ParamAssociationsDto, 
+    ParamRemoveAssociationsDto, 
     UpdateAssociationPasswordDto, UpdateAssociationsDto } from './dto/associations.dto';
 
 @ApiBearerAuth()
@@ -55,5 +56,11 @@ export class AssociationsController {
     async updateAssociationsPassword(donnees: UpdateAssociationPasswordDto, @Request() req: any) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
         return await this.associationsService.updatePassword(donnees, parseInt(req.user.id));
+    }
+
+    @Delete('delete')
+    async removeAssociations(@Param() donnees: ParamRemoveAssociationsDto, @Request() req: any) {
+        if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
+        return await this.associationsService.remove(donnees, parseInt(req.user.id));
     }
 }

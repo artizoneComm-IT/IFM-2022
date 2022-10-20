@@ -46,3 +46,8 @@ export class ParamAssociationsDto {
     @ApiProperty()
     id: number;
 }
+
+export class ParamRemoveAssociationsDto {
+    @ApiProperty()
+    id: number;
+}
