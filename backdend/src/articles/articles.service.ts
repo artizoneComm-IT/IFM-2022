@@ -28,7 +28,8 @@ export class ArticlesService {
             description: donnees.description,
             userId: user_id,
             categorieId: donnees.categorie_id,
-            typeArticleId: donnees.type_article_id
+            typeArticleId: donnees.type_article_id,
+            pathImage: donnees.path_image
         })
         .execute();
     }
@@ -44,7 +45,8 @@ export class ArticlesService {
             description: donnees.description,
             associationId: association_id,
             categorieId: donnees.categorie_id,
-            typeArticleId: donnees.type_article_id
+            typeArticleId: donnees.type_article_id,
+            pathImage: donnees.path_image
         })
         .execute();
     }
@@ -61,7 +63,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
@@ -82,7 +84,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
@@ -104,7 +106,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
@@ -126,7 +128,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
@@ -148,7 +150,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
@@ -171,7 +173,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')
@@ -194,7 +196,7 @@ export class ArticlesService {
             'as.nom_association as nom_association_createur',
             'as.tel as tel_association_createur',
             'c.nom_categorie as categorie_article',
-            't.type as type_article'
+            't.type as type_article', 'a.path_image as path_image'
         ])
         .innerJoin(Users, 'u', 'u.id = a.user_id')
         .innerJoin(Categories, 'c', 'c.id = a.categorie_id')

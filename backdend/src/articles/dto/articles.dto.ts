@@ -15,6 +15,9 @@ export class CreateArticlesDto {
 
     @ApiProperty()
     type_article_id: number;
+
+    @ApiProperty()
+    path_image?: string;
 }
 
 export class ParamArticlesDto {

@@ -4,6 +4,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
+import { Express } from 'express';
 import { AssociationsService } from './associations.service';
 import { CreateAssociationsDto, NomAssociationDto, ParamAssociationsDto, 
     ParamRemoveAssociationsDto, 
@@ -81,6 +82,7 @@ export class AssociationsController {
             }
         }),
         fileFilter: (req, file, cb) => {
+            if(file.size > 1000) return cb(null, false);
             if(!file.originalname.match(/\.(png|jpg|jpeg|svg)$/))
                 return cb(null, false);
             cb(null, true);

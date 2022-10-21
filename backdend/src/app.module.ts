@@ -9,6 +9,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { TypeArticlesModule } from './type-articles/type-articles.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -28,9 +29,10 @@ import { join } from 'path';
     }),
     AuthModule, UsersModule, AssociationsModule, 
     ArticlesModule, CategoriesModule, TypeArticlesModule,
+    MessagesModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads')
-    })
+    }),
   ]
 })
 export class AppModule {}

@@ -69,6 +69,7 @@ export class UsersController {
             }
         }),
         fileFilter: (req, file, cb) => {
+            if(file.size > 1000) return cb(null, false);
             if(!file.originalname.match(/\.(png|jpg|jpeg|svg)$/))
                 return cb(null, false);
             cb(null, true);

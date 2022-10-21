@@ -51,6 +51,9 @@ export class Articles {
   @Column("int", { name: "type_article_id" })
   typeArticleId: number;
 
+  @Column('varchar', { name: 'path_image', length: 255 })
+  pathImage: string;
+
   @ManyToOne(() => Associations, (associations) => associations.articles, {
     onDelete: "RESTRICT",
     onUpdate: "RESTRICT",

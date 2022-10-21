@@ -26,7 +26,7 @@ export class Messages {
   })
   createdAt: Date | null;
 
-  @Column("int", { name: "type_message_id" })
+  @Column("int", { name: "type_message_id", nullable: true })
   typeMessageId: number;
 
   @Column("int", { name: "user_id" })

@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS articles(
     association_id INT(11),
     categorie_id INT(11) NOT NULL,
     type_article_id INT(11) NOT NULL,
+    path_image VARCHAR(255),
     CONSTRAINT fk_articles_user_id 
         FOREIGN KEY(`user_id`) REFERENCES users(id),
     CONSTRAINT fk_articles_association_id 
