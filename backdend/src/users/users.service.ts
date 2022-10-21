@@ -78,4 +78,23 @@ export class UsersService {
         .where(`id=:identifiant`, { identifiant: user_id })
         .execute();
     }
+
+    async verifyPhoto_path(user_id: number): Promise<Users> {
+        return await this.usersRepository
+        .createQueryBuilder('u')
+        .select(['u.photo_path as photoPath'])
+        .where(`u.id=:identifiant`, { identifiant: user_id })
+        .getRawOne();
+    }
+
+    async update_photo(path_file: string, user_id: number): Promise<void> {
+        await this.usersRepository
+        .createQueryBuilder()
+        .update(Users)
+        .set({
+            photoPath: path_file
+        })
+        .where(`id=:identifiant`, { identifiant: user_id})
+        .execute();
+    }
 }

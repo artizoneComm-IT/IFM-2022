@@ -152,4 +152,23 @@ export class AssociationsService {
         if(!verify) throw new ForbiddenException('Credentials incorrects !');
         await this.associationsRepository.delete(donnees.id);
     }
+
+    async verifyPhoto_path(association_id: number): Promise<Associations> {
+        return await this.associationsRepository
+        .createQueryBuilder('u')
+        .select(['u.photo_path as photoPath'])
+        .where(`u.id=:identifiant`, { identifiant: association_id })
+        .getRawOne();
+    }
+
+    async update_photo(path_file: string, association_id: number): Promise<void> {
+        await this.associationsRepository
+        .createQueryBuilder()
+        .update(Associations)
+        .set({
+            photoPath: path_file
+        })
+        .where(`id=:identifiant`, { identifiant: association_id })
+        .execute();
+    }
 }

@@ -7,6 +7,8 @@ import { AssociationsModule } from './associations/associations.module';
 import { ArticlesModule } from './articles/articles.module';
 import { CategoriesModule } from './categories/categories.module';
 import { TypeArticlesModule } from './type-articles/type-articles.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -24,7 +26,11 @@ import { TypeArticlesModule } from './type-articles/type-articles.module';
       synchronize: true,
       autoLoadEntities: true
     }),
-    AuthModule, UsersModule, AssociationsModule, ArticlesModule, CategoriesModule, TypeArticlesModule
+    AuthModule, UsersModule, AssociationsModule, 
+    ArticlesModule, CategoriesModule, TypeArticlesModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads')
+    })
   ]
 })
 export class AppModule {}

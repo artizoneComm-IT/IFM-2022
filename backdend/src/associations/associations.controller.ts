@@ -1,7 +1,9 @@
 import { Body, Controller, Delete, Get, NotAcceptableException, 
-    Param, Patch, Post, Put, Request, UseGuards } from '@nestjs/common';
+    Param, Patch, Post, Put, Request, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { diskStorage } from 'multer';
 import { AssociationsService } from './associations.service';
 import { CreateAssociationsDto, NomAssociationDto, ParamAssociationsDto, 
     ParamRemoveAssociationsDto, 
@@ -62,5 +64,37 @@ export class AssociationsController {
     async removeAssociations(@Param() donnees: ParamRemoveAssociationsDto, @Request() req: any) {
         if(!donnees) throw new NotAcceptableException('Credentials incorrects !');
         return await this.associationsService.remove(donnees, parseInt(req.user.id));
+    }
+
+    @UseGuards(AuthGuard('jwtZarao'))
+    @Patch('update-photo')
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: "./uploads/associations_photo/",
+            filename: (req, file, cb): void => {
+                const name: string = file.originalname.split('.')[0];
+                const tmp: Array<string> =  file.originalname.split('.');
+                const fileExtension: string = tmp[tmp.length - 1];
+                const newFilename: string = name.split(' ').join('_') 
+                    + '_' + Date.now() + '.' + fileExtension;
+                cb(null, newFilename);
+            }
+        }),
+        fileFilter: (req, file, cb) => {
+            if(!file.originalname.match(/\.(png|jpg|jpeg|svg)$/))
+                return cb(null, false);
+            cb(null, true);
+        },
+    }))
+    async updatePhoto_user(@UploadedFile() file: Express.Multer.File, @Request() req: any) {
+        const lastProfil = await this.associationsService.verifyPhoto_path(parseInt(req.user.id));
+        if(lastProfil.photoPath) {
+            const fs = require('fs');
+            fs.unlink('./uploads' + lastProfil.photoPath, (err: any, data: any) => {
+                if(err) throw new Error('Erreur de suppression de fichier !');
+            });
+        }
+        const photo_path = `/assiacitions_photo/${ file.filename }`;
+        return await this.associationsService.update_photo(photo_path, parseInt(req.user.id));
     }
 }
