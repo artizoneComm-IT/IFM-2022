@@ -1,5 +1,290 @@
 <!DOCTYPE html>
 <html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarao | Chat</title>
+    <!-- Logo sur le navigateur -->
+    <link rel="shortcut icon" href="assets/images/logo-zarao.png" type="image/x-icon">
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+</head>
+<body>
+
+    <!-- ====================================================== -->
+
+    <nav class="navbar navbar-expand-lg bg-light  fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img  class="d-sm-flex" src="assets/images/logoZarao.png" width="100">
+          </a>
+            <div class="d-sm-flex form-inputs" role="search">
+                <input class="form-control" type="text" placeholder="Trouver un article...">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="d-sm-flex flex-row align-items-center">
+                <a href="#">                
+                    <span class="shop-bag" width="30px"><i class='fa fa-user'></i></span>
+                </a>
+                <div class="d-flex flex-column">
+                    <li class = "d-none d-md-block nav-item">
+                        <a class = "nav-link text-uppercase text-dark" href = "#connection">Se connecter</a>
+                    </li>
+                </div>    
+            </div> 
+        </div>
+      </nav>
+
+    <!-- ====================================================== -->
+
+    <!-- <div class="container-fluid titre">
+        <div class="row">
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-9">
+                <p>Zarao, l'application qui vous aide à vider votre grenier mais aussi vous assiste dans le respect du développement durable</p>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 side-bar">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline text-dark">Menu</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0 text-dark">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"> + Article</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Donation</span> </a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link text-dark px-0"> <span class="d-none d-sm-inline">Pour</span>Association</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-dark px-0"> <span class="d-none d-sm-inline">Pour</span>Noël</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle text-dark">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Messages</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle text-dark">
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Associations</span> </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0 align-middle text-dark">
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Vendeurs</span> </a>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+            </div>
+            <div class="col py-3">
+                <div class="card direct-chat direct-chat-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Messages</h3>
+                        <div class="card-tools">
+                            <span title="3 New Messages" class="badge badge-warning">3</span>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle"><i class="fas fa-comments"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="direct-chat-messages">
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-left">Xavier</span>
+                                    <span class="direct-chat-timestamp float-right">18 Oct 11:00 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
+                                <div class="direct-chat-text">
+                                    De aoan Maître a! Ca va ve lah?
+                                </div>
+                            </div>
+        
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-right">Lahatra</span>
+                                    <span class="direct-chat-timestamp float-left">10 Oct 11:05 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
+                                <div class="direct-chat-text">
+                                    Manaja Maître!
+                                </div>
+                            </div>
+        
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-left">Xavier</span>
+                                    <span class="direct-chat-timestamp float-right">18 Oct 11:37 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
+                                <div class="direct-chat-text">
+                                    Vita ve ny projet ao?
+                                </div>
+                            </div>
+        
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-right">Lahatra</span>
+                                    <span class="direct-chat-timestamp float-left">18 Oct 11:58 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
+                                <div class="direct-chat-text">
+                                    Zah aloha tsy mbola nahita zavatra tsy vitan'lah e!
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card-footer">
+                            <form action="#" method="post">
+                                <div class="input-group">
+                                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                    <span class="input-group-append">
+                                <button type="button" class="btn btn-warning">Envoyer</button>
+                                </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+    <!-- ====================================================== -->
+
+    <!-- footer -->
+    <footer class = "bg-dark py-5">
+        <div class = "container">
+            <div class = "row text-white g-4">
+                <div class = "col-md-12 col-lg-4">
+                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">Zarao</a>
+                    <p class = "text-white text-muted mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum mollitia quisquam veniam odit cupiditate, ullam aut voluptas velit dolor ipsam?</p>
+                </div>
+
+
+                <div class = "col-md-12 col-lg-4">
+                    <h5 class = "fw-light mb-3">Nous contacter</h5>
+                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class = "me-3">
+                            <i class = "fas fa-map-marked-alt"></i>
+                        </span>
+                        <span class = "fw-light">
+                            Antananarivo, Madagascar
+                        </span>
+                    </div>
+                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class = "me-3">
+                            <i class = "fas fa-envelope"></i>
+                        </span>
+                        <span class = "fw-light">
+                            zarao.contact@gmail.com
+                        </span>
+                    </div>
+                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class = "me-3">
+                            <i class = "fas fa-phone-alt"></i>
+                        </span>
+                        <span class = "fw-light">
+                            034 12 345 67
+                        </span>
+                    </div>
+                </div>
+
+                <div class = "col-md-12 col-lg-4">
+                    <h5 class = "fw-light mb-3">Nous suivre</h5>
+                    <div>
+                        <ul class = "list-unstyled d-flex">
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-pinterest"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer -->
+
+
+
+
+    <!-- jquery -->
+    <script src = "assets/js/jquery-3.6.0.js"></script>
+    <!-- isotope js -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <!-- bootstrap js -->
+    <script src = "assets/js/bootstrap.min.js"></script>
+    <!-- custom js -->
+    <script src = "assets/js/script.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +293,7 @@
     <title>Zarao</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    
 </head>
 
 <body>
@@ -86,4 +371,4 @@
         <script src="./assets/js/script.js"></script>
 </body>
 
-</html>
+</html> -->
