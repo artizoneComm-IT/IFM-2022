@@ -1,3 +1,4 @@
+
 /* Importation de la police  */
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
 
@@ -58,17 +59,22 @@ body{
 .shop-bag{
     background-color: var(--color);
     color:#fff;
-    height:50px;
-    width:50px;
+    height:35px;
+    width:35px;
     font-size:25px;
     display:flex;
     border-radius:50%;
     align-items:center;
     justify-content:center;
 }
+.shop-bag:hover{
+    height: 40px;
+    width: 40px;
+}
 
 .form-inputs{
     position:relative;
+    width: 60em;
 }
 .form-inputs .form-control{
     height:45px; 
@@ -247,4 +253,14 @@ footer a:hover{
     .nav-item{
         border-bottom: none;
     }
+}
+
+.titre {
+    padding-top: 8em;
+}
+
+.side-bar {
+    background-color: whitesmoke;
+    color: #fff;
+    font-family: var(--sm-font);
 }
