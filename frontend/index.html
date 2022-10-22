@@ -23,7 +23,7 @@
           <a class="navbar-brand" href="#">
             <img  class="d-sm-flex" src="assets/images/logoZarao.png" width="100">
           </a>
-          <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="float-right d-lg-none" style="cursor:pointer;">                
+          <a data-bs-toggle="modal" data-bs-target="#connexion" class="float-right d-lg-none" style="cursor:pointer;">                
             <span class="shop-bag" width="30px"><i class='fa fa-user'></i></span>
           </a>
             <div class="d-sm-flex form-inputs" role="search">
@@ -31,38 +31,98 @@
                 <i class="fa fa-search"></i>
             </div>
             <div class="d-sm-flex flex-row align-items-center">
-                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="d-none d-lg-block" style="cursor:pointer;">                
+                <a data-bs-toggle="modal" data-bs-target="#connexion" class="d-none d-lg-block" style="cursor:pointer;">                
                     <span class="shop-bag" width="30px"><i class='fa fa-user'></i></span>
                 </a>
                 <div class="d-flex flex-column">
                     <li class = "d-none d-xl-block nav-item">
-                        <a class = "nav-link text-uppercase text-dark" href = "" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Se connecter</a>
+                        <a class = "nav-link text-uppercase text-dark" href = "" data-bs-toggle="modal" data-bs-target="#connexion">Se connecter</a>
                     </li>
                 </div>    
             </div> 
         </div>
       </nav>
-
-    <!-- Formulaire modal pour s'inscrire -->
-      <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-  </button> -->
   
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+  <div class="modal fade" id="connexion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="inscriptionLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content justify-content-center">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title" id="connexionLabel" style="color: #e2ad3b;">Se connecter</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          ...
+        <div class="modal-body justify-content-center">
+            <div class="container justify-text-center">
+                
+            </div>
+            <div class="sign">
+                <i class="fa fa-user"></i>
+                <input class="signin" type="text" placeholder="Votre nom..." required>
+            </div>
+            <div class="sign">
+                <i class="fa fa-envelope"></i>
+                <input class="signin" type="email" placeholder="Votre mail" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+            </div>
+            <div class="sign">
+                <i class="fa fa-lock"></i>
+                <input class="signin" type="password" placeholder="Mot de passe...">
+            </div>
+            <div class="sign">
+                <select class="form-select signin" aria-label="Default select example">
+                    <option selected>Simple utilisateur</option>
+                    <option value="1">Association</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">se Connecter</button>
+            <p style="margin-top: 15px;">Pas encore de compte
+                <a href="" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#inscription">Créer un compte</a>
+            </p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="inscription" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="inscriptionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content justify-content-center">
+        <div class="modal-header">
+            <h5 class="modal-title" id="inscriptionLabel" style="color: #e2ad3b;">S'inscrire</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body justify-content-center">
+            <div class="container justify-text-center">
+                
+            </div>
+            <div class="sign">
+                <i class="fa fa-user"></i>
+                <input class="signin" type="text" placeholder="Votre nom..." required>
+            </div>
+            <div class="sign">
+                <i class="fa fa-envelope"></i>
+                <input class="signin" type="email" placeholder="Votre mail" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+            </div>
+            <div class="sign">
+                <i class="fa fa-lock"></i>
+                <input class="signin" type="password" placeholder="Mot de passe...">
+            </div>
+            <div class="sign">
+                <i class="fa fa-lock"></i>
+                <input class="signin" type="password" placeholder="Confirmer mot de passe...">
+            </div>
+            <div class="sign">
+                <select class="form-select signin" aria-label="Default select example">
+                    <option selected>Simple utilisateur</option>
+                    <option value="1">Association</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">S'inscrire</button>
+            
+            <p style="margin-top: 15px;">Plutôt 
+                <a href="" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#connexion"> se connecter</a>
+            </p>
         </div>
       </div>
     </div>
@@ -327,7 +387,7 @@
                 <div class = "offers-content">
                     <span class = "text-white">Tous ensemble fêtons noël</span>
                     <h2 class = "mt-2 mb-4 text-white">vendez ou donnez des articles pour Noël</h2>
-                    <a class = "btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Participer maintenant</a>
+                    <a class = "btn" data-bs-toggle="modal" data-bs-target="#connexion">Participer maintenant</a>
                 </div>
             </div>
         </div>
@@ -352,7 +412,7 @@
                                 <span class = "fw-bold">Author: </span>Alisoa
                             </small>
                         </p>
-                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class = "btn">se connecter</a>
+                        <a data-bs-toggle="modal" data-bs-target="#connexion" class = "btn">se connecter</a>
                     </div>
                 </div>
 
@@ -366,7 +426,7 @@
                                 <span class = "fw-bold">Author: </span>Lahatra
                             </small>
                         </p>
-                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class = "btn">Se connecter</a>
+                        <a data-bs-toggle="modal" data-bs-target="#connexion" class = "btn">Se connecter</a>
                     </div>
                 </div>
 
@@ -380,7 +440,7 @@
                                 <span class = "fw-bold">Author: </span>Xavier
                             </small>
                         </p>
-                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class = "btn">Se connecter</a>
+                        <a data-bs-toggle="modal" data-bs-target="#connexion" class = "btn">Se connecter</a>
                     </div>
                 </div>
             </div>
