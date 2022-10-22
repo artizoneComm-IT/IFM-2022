@@ -8,6 +8,9 @@ export class CreateArticlesDto {
     nombres: number;
 
     @ApiProperty()
+    prix_article: string;
+
+    @ApiProperty()
     description: string;
 
     @ApiProperty()

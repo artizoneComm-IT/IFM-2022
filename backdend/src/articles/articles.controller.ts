@@ -6,7 +6,8 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 import { diskStorage } from 'multer';
 import { Express } from 'express';
 import { ArticlesService } from './articles.service';
-import { CategoriesArticlesDto, CreateArticlesDto, NomArticleDto, ParamArticlesDto, TypeArticlesDto, UpdateArticlesDto } from './dto';
+import { CategoriesArticlesDto, CreateArticlesDto, NomArticleDto, 
+    ParamArticlesDto, TypeArticlesDto, UpdateArticlesDto } from './dto';
 
 @ApiBearerAuth()
 @Controller('articles')

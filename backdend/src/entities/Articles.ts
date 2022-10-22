@@ -26,6 +26,9 @@ export class Articles {
   @Column("int", { name: "nombres" })
   nombres: number;
 
+  @Column("varchar", { name: "prix_article", length: 255 })
+  prixArticle: string | null;
+
   @Column("text", { name: "description", nullable: true })
   description: string | null;
 
