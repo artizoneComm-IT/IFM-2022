@@ -17,4 +17,3 @@ var $grid = $('.collection-list').isotope({
     });
   }
 
-  

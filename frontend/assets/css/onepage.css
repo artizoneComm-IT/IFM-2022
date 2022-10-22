@@ -116,6 +116,7 @@ body {
 }
 
 .navbar .form-control {
+  border: 1px solid var(--color);
   padding: .75rem 1rem;
   border-width: 0;
   border-radius: 0;
@@ -209,3 +210,80 @@ main footer a:hover{
 .collection-img img{
   height: 15em;
 }
+
+
+/* offers */
+#offers{
+  background: url(../images/noel-banner.png) center/cover no-repeat;
+}
+#offers .row{
+  min-height: 60vh;
+}
+.offers-content span{
+  font-size: 28px;
+}
+.offers-content h2{
+  font-size: 60px;
+  font-family: var(--lg-font);
+}
+.offers-content .btn{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.155);
+  border-color: transparent!important;
+}
+
+.offers-content .btn:hover{
+  background-color: var(--color);
+  color: white;
+}
+
+.modal-content {
+  padding: 2em;
+  text-align: center;
+}
+
+.signin {
+  margin: 10px;
+  height: 40px;
+}
+
+.sign i{
+  color: #e2ad3b;
+}
+
+.sign .signin :focus{
+  
+  box-shadow:none;
+  border:1px solid var(--color);
+}
+
+.btn-close:focus{
+  box-decoration-break: unset;
+  box-shadow: none;
+}
+.form-select:focus{
+  border-color: var(--color);
+  box-decoration-break: unset;
+  box-shadow: none;
+}
+.form-select{
+  margin: 10px;
+  margin-left: 26%;
+  width: 50%;
+  box-decoration-break: unset;
+  box-shadow: none;
+}
+
+/* user profile custom */
+
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #beac4371;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(140, 140, 139, 0.661), rgb(95, 111, 138));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(140, 140, 139, 0.661), rgb(95, 111, 138));
+  }
