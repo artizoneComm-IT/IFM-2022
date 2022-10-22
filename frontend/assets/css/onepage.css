@@ -273,3 +273,17 @@ main footer a:hover{
   box-decoration-break: unset;
   box-shadow: none;
 }
+
+/* user profile custom */
+
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #beac4371;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(140, 140, 139, 0.661), rgb(95, 111, 138));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(140, 140, 139, 0.661), rgb(95, 111, 138));
+  }
