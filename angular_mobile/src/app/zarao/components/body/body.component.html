@@ -3,23 +3,31 @@
         <div class="row py-2">
             <div class="col-12 d-flex align-items-center 
                 justify-content-between">
-                <img src="assets/images/logo.png" class="img-fluid"  
-                    width="113" alt="zarao">
+                <img src="assets/images/logo.png" class="img-fluid" width="97" alt="zarao">
                 <div class="dropdown">
-                    <button class="btn" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn py-0" type="button" data-bs-toggle="dropdown" 
+                        aria-expanded="false">
                         <i class="bi bi-text-paragraph fs-1"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Action</a></li>
-                        <li><a class="dropdown-item">Action two</a></li>
-                        <li><a class="dropdown-item">Action three</a></li>
+                        <li *ngFor="let data of dropdown">
+                            <a class="dropdown-item d-flex align-items-center">
+                                <i [class]="data.icone"></i>
+                                <span class="mx-2">{{ data.label }}</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+<section>
+    <div class="my-5 py-2"></div>
+    <router-outlet></router-outlet>
+    <div class="my-5 py-1"></div>
+</section>
 
 <nav class="fixed-bottom pb-2 pt-3 shadow">
     <div class="container" id="menu_bottom">
@@ -28,7 +36,10 @@
                 justify-content-center align-items-center">
                 <li class="px-1 d-flex flex-column 
                     align-items-center justify-content-center" 
-                    *ngFor="let data of menu">
+                    *ngFor="let data of menu"
+                    [routerLink]="data.route"
+                    routerLinkActive="active_menu"
+                    [routerLinkActiveOptions]="{ exact: true }">
                     <i [class]="data.icone" class="fs-3"></i>
                     <span>{{ data.label }}</span>
                 </li>
@@ -36,5 +47,3 @@
         </div>
     </div>
 </nav>
-
-

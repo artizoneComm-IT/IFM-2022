@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { listMenu } from './list_menu';
+import { dropdownMenu, listMenu } from './list_menu';
 
 @Component({
   selector: 'app-body',
@@ -8,11 +8,13 @@ import { listMenu } from './list_menu';
 })
 export class BodyComponent implements OnInit {
 
-  menu!: { icone: string, label: string }[];
+  menu!: { icone: string, label: string , route: string }[];
+  dropdown!: { icone: string, label: string }[];
   constructor() { }
 
   ngOnInit(): void {
     this.menu = listMenu;
+    this.dropdown = dropdownMenu;
   }
 
 }
