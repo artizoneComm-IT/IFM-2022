@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'zarao', 
+  { path: '', 
     loadChildren: () => import('./zarao/zarao.module').then(m => m.ZaraoModule)
   },
-  { path: '', redirectTo: 'zarao', pathMatch: 'full' },
-  { path: '**', redirectTo: 'zarao', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
