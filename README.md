@@ -7,4 +7,4 @@
   - Bootstrap
   
 - [ ] Lien vers le swagger de l'API:
-  `https://api-zarao.iteam-$.mg/docs`
+  `https://api-zarao.iteam-s.mg/docs`
