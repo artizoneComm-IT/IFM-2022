@@ -25,6 +25,7 @@ export class ArticlesService {
         .values({
             nomArticle: donnees.nom_article,
             nombres: donnees.nombres,
+            prixArticle: donnees.prix_article,
             description: donnees.description,
             userId: user_id,
             categorieId: donnees.categorie_id,
@@ -42,6 +43,7 @@ export class ArticlesService {
         .values({
             nomArticle: donnees.nom_article,
             nombres: donnees.nombres,
+            prixArticle: donnees.prix_article,
             description: donnees.description,
             associationId: association_id,
             categorieId: donnees.categorie_id,
@@ -56,6 +58,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
@@ -77,6 +80,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
@@ -99,6 +103,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
@@ -121,6 +126,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
@@ -143,6 +149,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
@@ -166,6 +173,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
@@ -189,6 +197,7 @@ export class ArticlesService {
         .createQueryBuilder('a')
         .select([
             'a.id as id', 'a.nom_article as nom_article',
+            'a.prix_article as prix_article',
             'a.nombres as nombres', 'a.description as description',
             'a.created_at as created_at', 'a.updated_at as updated_at',
             'u.nom as nom_createur', 'u.prenoms as prenoms_createur',
