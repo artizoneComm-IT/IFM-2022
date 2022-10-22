@@ -168,3 +168,44 @@ main footer a:hover{
 .btn-toolbar .btn:focus{
   box-shadow: none;
 }
+
+/* collection */
+.active-filter-btn{
+  background-color: var(--color)!important;
+  color: #fff!important;
+  border-color: var(--color)!important;
+}
+.filter-button-group .btn{
+  margin-top: 5px;
+  border:1px solid var(--color)!important;
+}
+.filter-button-group .btn:hover{
+  color: #fff!important;
+  background-color: var(--color);
+}
+.filter-button-group .btn:focus{
+  box-shadow: none;
+}
+
+.rating span i{
+  color: var(--color);
+}
+
+.collection-img span{
+  top: 20px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.collection-img:hover{
+  cursor: pointer;
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.collection-img img{
+  height: 15em;
+}

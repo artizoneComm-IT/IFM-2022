@@ -160,15 +160,10 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">File générale d'articles</h1>
-        <!-- <div class="btn-toolbar mb-2 mb-md-0">
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            Voir les catégories
-          </button>
-        </div> -->
         <div class="btn-toolbar mb-2 mb-md-0">
-          <a class="btn btn-sm btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
+          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            Voir par catégorie
+          </button>
     
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li><a class="dropdown-item" href="#">Vêtements et accessoires</a></li>
@@ -181,9 +176,270 @@
         </div>
       </div>
       
+      <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+          <!-- collection -->
+    <section id = "collection" class = "py-5">
+      <div class = "container">
+          <div class = "title text-center">
+              <h2 class = "position-relative d-inline-block">Les articles populaires</h2>
+          </div>
 
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+          <div class = "row g-0">
+              <div class = "d-flex flex-wrap justify-content-center mt-5 filter-button-group">
+                  <button type = "button" class = "btn m-2 text-dark active-filter-btn" data-filter = "*">Tous</button>
+                  <button type = "button" class = "btn m-2 text-dark" data-filter = ".best">Populaires</button>
+                  <button type = "button" class = "btn m-2 text-dark" data-filter = ".feat">Echanges</button>
+                  <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">Donations</button>
+              </div>
 
+              <div class = "collection-list mt-4 row gx-0 gy-3">
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article best">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/casquette.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">casquette</p>
+                          <span class = "fw-bold">10 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Acheter</button> <br>
+                            <button type = "button" class="btn">Echanger</button> <br>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article feat">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/roman-jeunesse.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">roman jeunesse</p>
+                          <span class = "fw-bold">10 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Acheter</button> <br>
+                            <button type = "button" class="btn">Proposer un prix</button> <br>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article new">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/chapeau.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">chapeau</p>
+                          <span class = "fw-bold">20 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Echanger</button> <br>
+                            <button type = "button" class="btn">Message</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article best">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/cartable.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">cartable</p>
+                          <span class = "fw-bold">35 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Echanger</button> <br>
+                            <button type = "button" class="btn">Message</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article feat">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/chaussures.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">chaussures</p>
+                          <span class = "fw-bold">3 500 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Acheter</button> <br>
+                            <button type = "button" class="btn">Message</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article new">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/micro-onde.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">Micro onde</p>
+                          <span class = "fw-bold">5 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Acheter</button> <br>
+                            <button type = "button" class="btn">Echanger</button> <br>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article best">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/pc.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">pc 32"</p>
+                          <span class = "fw-bold">5 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Acheter</button> <br>
+                            <button type = "button" class="btn">Message</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article feat">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/smartphone.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">smartphone</p>
+                          <span class = "fw-bold">10 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Acheter</button> <br>
+                          </div>
+                      </div>
+                  </div>
+                  <div class = "collection-list mt-4 row gx-0 gy-3">
+                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article best">
+                        <div class = "collection-img position-relative">
+                            <img src = "assets/images/casquette.jpg" class = "w-100">
+                            
+                        </div>
+                        <div class = "text-center">
+                            <div class = "rating mt-3">
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            </div>
+                            <p class = "text-capitalize my-1">casquette</p>
+                            <span class = "fw-bold">10 000 Ar</span>
+                            <div class="filter-button-group">
+                              <button type = "button" class="btn">Echanger</button> <br>
+                              <button type = "button" class="btn">Message</button>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article feat">
+                        <div class = "collection-img position-relative">
+                            <img src = "assets/images/roman-jeunesse.jpg" class = "w-100">
+                            
+                        </div>
+                        <div class = "text-center">
+                            <div class = "rating mt-3">
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            </div>
+                            <p class = "text-capitalize my-1">roman jeunesse</p>
+                            <span class = "fw-bold">10 000 Ar</span>
+                            <div class="filter-button-group">
+                              <button type = "button" class="btn">Proposer un prix</button> <br>
+                              <button type = "button" class="btn">Message</button>
+                            </div>
+                        </div>
+                    </div>
+  
+                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article new">
+                        <div class = "collection-img position-relative">
+                            <img src = "assets/images/chapeau.jpg" class = "w-100">
+                            
+                        </div>
+                        <div class = "text-center">
+                            <div class = "rating mt-3">
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            </div>
+                            <p class = "text-capitalize my-1">chapeau</p>
+                            <span class = "fw-bold">20 000 Ar</span>
+                            <div class="filter-button-group">
+                              <button type = "button" class="btn">Acheter</button> <br>
+                              <button type = "button" class="btn">Message</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 article best">
+                      <div class = "collection-img position-relative">
+                          <img src = "assets/images/cartable.jpg" class = "w-100">
+                          
+                      </div>
+                      <div class = "text-center">
+                          <div class = "rating mt-3">
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                              <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                          </div>
+                          <p class = "text-capitalize my-1">cartable</p>
+                          <span class = "fw-bold">35 000 Ar</span>
+                          <div class="filter-button-group">
+                            <button type = "button" class="btn">Echanger</button> <br>
+                            <button type = "button" class="btn">Message</button>
+                          </div>
+                      </div>
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- end of collection -->
 
     </main>
   </div>
