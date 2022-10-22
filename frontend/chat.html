@@ -1,179 +1,245 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zarao | Chat</title>
-    <!-- Logo sur le navigateur -->
-    <link rel="shortcut icon" href="assets/images/logo-zarao.png" type="image/x-icon">
-    <!-- fontawesome cdn -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Zarao | Accueil</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <!-- css -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-</head>
-<body>
 
-    <!-- ====================================================== -->
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/dashboard.rtl.css" rel="stylesheet">
 
-    <nav class="navbar navbar-expand-lg bg-light  fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img  class="d-sm-flex" src="assets/images/logoZarao.png" width="100">
-          </a>
-            <div class="d-sm-flex form-inputs" role="search">
-                <input class="form-control" type="text" placeholder="Trouver un article...">
-                <i class="fa fa-search"></i>
-            </div>
-            <div class="d-sm-flex flex-row align-items-center">
-                <a href="#">                
-                    <span class="shop-bag" width="30px"><i class='fa fa-user'></i></span>
-                </a>
-                <div class="d-flex flex-column">
-                    <li class = "d-none d-md-block nav-item">
-                        <a class = "nav-link text-uppercase text-dark" href = "#connection">Se connecter</a>
-                    </li>
-                </div>    
-            </div> 
-        </div>
-      </nav>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-    <!-- ====================================================== -->
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
 
-    <!-- <div class="container-fluid titre">
-        <div class="row">
-            <div class="col-md-3">
-                
-            </div>
-            <div class="col-md-9">
-                <p>Zarao, l'application qui vous aide à vider votre grenier mais aussi vous assiste dans le respect du développement durable</p>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 side-bar">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5 d-none d-sm-inline text-dark">Menu</span>
-                    </a>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0 text-dark">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"> + Article</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Donation</span> </a>
-                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link text-dark px-0"> <span class="d-none d-sm-inline">Pour</span>Association</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link text-dark px-0"> <span class="d-none d-sm-inline">Pour</span>Noël</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Messages</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Associations</span> </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle text-dark">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Vendeurs</span> </a>
-                        </li>
-                    </ul>
-                    <hr>
-                </div>
-            </div>
-            <div class="col py-3">
-                <div class="card direct-chat direct-chat-warning">
-                    <div class="card-header">
-                        <h3 class="card-title">Messages</h3>
-                        <div class="card-tools">
-                            <span title="3 New Messages" class="badge badge-warning">3</span>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle"><i class="fas fa-comments"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="direct-chat-messages">
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-left">Xavier</span>
-                                    <span class="direct-chat-timestamp float-right">18 Oct 11:00 pm</span>
-                                </div>
-                                <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
-                                <div class="direct-chat-text">
-                                    De aoan Maître a! Ca va ve lah?
-                                </div>
-                            </div>
-        
-                            <div class="direct-chat-msg right">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-right">Lahatra</span>
-                                    <span class="direct-chat-timestamp float-left">10 Oct 11:05 pm</span>
-                                </div>
-                                <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
-                                <div class="direct-chat-text">
-                                    Manaja Maître!
-                                </div>
-                            </div>
-        
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-left">Xavier</span>
-                                    <span class="direct-chat-timestamp float-right">18 Oct 11:37 pm</span>
-                                </div>
-                                <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
-                                <div class="direct-chat-text">
-                                    Vita ve ny projet ao?
-                                </div>
-                            </div>
-        
-                            <div class="direct-chat-msg right">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-right">Lahatra</span>
-                                    <span class="direct-chat-timestamp float-left">18 Oct 11:58 pm</span>
-                                </div>
-                                <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
-                                <div class="direct-chat-text">
-                                    Zah aloha tsy mbola nahita zavatra tsy vitan'lah e!
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="card-footer">
-                            <form action="#" method="post">
-                                <div class="input-group">
-                                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                                    <span class="input-group-append">
-                                <button type="button" class="btn btn-warning">Envoyer</button>
-                                </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     
+    <!-- Custom styles for this template -->
+    <link href="./assets/css/onepage.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+    <img  class="d-sm-flex" src="assets/images/logoZarao.png" width="100">
+  </a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-light w-100" type="text" placeholder="Chercher un article" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div>
+</header>
 
-    <!-- ====================================================== -->
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="padding-top: 100px;">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="text-decoration: none; color: #e2ad3b ;">
+              <i class="fas fa-user"></i>
+              Mon profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-comment"></i>              
+              </span>
+              Message
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-users"></i>
+              </span>
+              Liste des vendeurs 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-hands-helping"></i>
+              </span>
+              Liste des associations
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-rss-square"></i>
+              </span>
+              File d'actualité
+            </a>
+          </li>
+        </ul>
 
-    <!-- footer -->
-    <footer class = "bg-dark py-5">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Ajouter un article</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-box"></i>
+              </span>
+              Vente
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-gift"></i>
+              </span>
+              Donation
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-balance-scale"></i>
+              </span>
+              Echange
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Faire une donation</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-hand-holding-heart"></i>
+              </span>
+              Pour association
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class = "me-3">
+                <i class="fas fa-sleigh"></i>
+              </span>
+              Pour Noël
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="my-4 w-100" width="900" height="380">
+            <div class="row flex-nowrap">
+                <div class="col py-3">
+                    <div class="card direct-chat direct-chat-warning">
+                        <div class="card-header">
+                            <h3 class="card-title">Messages</h3>
+                            <div class="card-tools">
+                                <span title="3 New Messages" class="badge badge-warning">3</span>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle"><i class="fas fa-comments"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="direct-chat-messages">
+                                <div class="direct-chat-msg">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-left">Xavier</span>
+                                        <span class="direct-chat-timestamp float-right">18 Oct 11:00 pm</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
+                                    <div class="direct-chat-text">
+                                        De aoan Maître a! Ca va ve lah?
+                                    </div>
+                                </div>
+            
+                                <div class="direct-chat-msg right">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-right">Lahatra</span>
+                                        <span class="direct-chat-timestamp float-left">10 Oct 11:05 pm</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
+                                    <div class="direct-chat-text">
+                                        Manaja Maître!
+                                    </div>
+                                </div>
+            
+                                <div class="direct-chat-msg">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-left">Xavier</span>
+                                        <span class="direct-chat-timestamp float-right">18 Oct 11:37 pm</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
+                                    <div class="direct-chat-text">
+                                        Vita ve ny projet ao?
+                                    </div>
+                                </div>
+            
+                                <div class="direct-chat-msg right">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-right">Lahatra</span>
+                                        <span class="direct-chat-timestamp float-left">18 Oct 11:58 pm</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
+                                    <div class="direct-chat-text">
+                                        Zah aloha tsy mbola nahita zavatra tsy vitan'lah e!
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="card-footer">
+                                <form action="#" method="post">
+                                    <div class="input-group">
+                                        <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                        <span class="input-group-append">
+                                    <button type="button" class="btn btn-warning">Envoyer</button>
+                                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+      
+      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+
+      <footer class = "bg-dark py-5">
         <div class = "container">
             <div class = "row text-white g-4">
                 <div class = "col-md-12 col-lg-4">
@@ -240,135 +306,16 @@
             </div>
         </div>
     </footer>
-    <!-- end of footer -->
+    </main>
+  </div>
+
+  
+</div>
 
 
-
-
-    <!-- jquery -->
-    <script src = "assets/js/jquery-3.6.0.js"></script>
-    <!-- isotope js -->
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-    <!-- bootstrap js -->
-    <script src = "assets/js/bootstrap.min.js"></script>
-    <!-- custom js -->
-    <script src = "assets/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/938e38e4e6.js" crossorigin="anonymous"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="./assets/js/dashboard.js"></script>
+
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html> -->
-<!-- <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zarao</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    
-</head>
-
-<body>
-    <div class="col-md-6">
-        <div class="card direct-chat direct-chat-warning">
-            <div class="card-header">
-                <h3 class="card-title">Messages</h3>
-                <div class="card-tools">
-                    <span title="3 New Messages" class="badge badge-warning">3</span>
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle"><i class="fas fa-comments"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="direct-chat-messages">
-                    <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-left">Xavier</span>
-                            <span class="direct-chat-timestamp float-right">18 Oct 11:00 pm</span>
-                        </div>
-                        <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
-                        <div class="direct-chat-text">
-                            De aoan Maître a! Ca va ve lah?
-                        </div>
-                    </div>
-
-                    <div class="direct-chat-msg right">
-                        <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-right">Lahatra</span>
-                            <span class="direct-chat-timestamp float-left">10 Oct 11:05 pm</span>
-                        </div>
-                        <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
-                        <div class="direct-chat-text">
-                            Manaja Maître!
-                        </div>
-                    </div>
-
-                    <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-left">Xavier</span>
-                            <span class="direct-chat-timestamp float-right">18 Oct 11:37 pm</span>
-                        </div>
-                        <img class="direct-chat-img" src="./assets/images/xavier.jpg" alt="message user image">
-                        <div class="direct-chat-text">
-                            Vita ve ny projet ao?
-                        </div>
-                    </div>
-
-                    <div class="direct-chat-msg right">
-                        <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-right">Lahatra</span>
-                            <span class="direct-chat-timestamp float-left">18 Oct 11:58 pm</span>
-                        </div>
-                        <img class="direct-chat-img" src="./assets/images/lahatra.jpg" alt="message user image">
-                        <div class="direct-chat-text">
-                            Zah aloha tsy mbola nahita zavatra tsy vitan'lah e!
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-footer">
-                    <form action="#" method="post">
-                        <div class="input-group">
-                            <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                            <span class="input-group-append">
-                        <button type="button" class="btn btn-warning">Envoyer</button>
-                        </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <script src="./assets/js/bootstrap.bundle.min.js"></script>
-        <script src="./assets/js/script.js"></script>
-</body>
-
-</html> -->

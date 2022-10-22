@@ -1,0 +1,211 @@
+/* Importation de la police  */
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
+
+
+:root{
+  --lg-font: 'Kaisei Tokumin', serif;
+  --sm-font: 'Poppins', sans-serif;
+  --color: #e2ad3b ;
+}
+
+body {
+  font-family: var(--lg-font);
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 var(--color);
+  
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar .nav-link.active {
+  color: #2470dc;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+ .navbar {
+  background-color: white;
+ }
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: whitesmoke;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  margin-left: 10px;
+}
+
+.nav-link {
+  font-family: var(--sm-font);
+}
+
+.nav-link:hover{
+  color: var(--color)!important;
+} 
+
+.navbar .form-control:focus{
+  box-shadow:none;
+  border:1px solid var(--color);
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+/* footer */
+main footer .brand{
+  font-family: var(--lg-font);
+  letter-spacing: 2px;
+  font-size: 2em;
+}
+main footer a{
+  -webkit-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+main footer span{
+  color: var(--color)!important;
+}
+
+main footer a:hover{
+  color: var(--color)!important;
+}
+
+.btn-toolbar .btn {
+  border:1px solid var(--color);
+  background-color: var(--color);
+  color: white;
+}
+
+.btn-toolbar .btn:hover {
+  border:1px solid var(--color);
+  background-color: white;
+  color: var(--color);
+  box-shadow: none;
+}
+
+.btn-toolbar .btn:focus{
+  box-shadow: none;
+}
+
+/* collection */
+.active-filter-btn{
+  background-color: var(--color)!important;
+  color: #fff!important;
+  border-color: var(--color)!important;
+}
+.filter-button-group .btn{
+  margin-top: 5px;
+  border:1px solid var(--color)!important;
+}
+.filter-button-group .btn:hover{
+  color: #fff!important;
+  background-color: var(--color);
+}
+.filter-button-group .btn:focus{
+  box-shadow: none;
+}
+
+.rating span i{
+  color: var(--color);
+}
+
+.collection-img span{
+  top: 20px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.collection-img:hover{
+  cursor: pointer;
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.collection-img img{
+  height: 15em;
+}
